@@ -40,7 +40,9 @@ class Menu extends Component {
 
         {(Object.keys(this.props.order.items).length == 0) && <Activity />} 
 
-        <Total {...this.props} />
+        <TouchableOpacity onPress={() => console.log('Summary')}>
+          <Total {...this.props} />
+        </TouchableOpacity>
         
         <Buttons
         prevName = "table"
