@@ -8,5 +8,8 @@ export const SWITCH_TIP = 'SWITCH_TIP'
 export const SET_PAYMENT_URI = 'SET_PAYMENT_URI'
 export const UPDATE_ORDER_STATUS = 'UPDATE_ORDER_STATUS'
 
+export const CHOOSE_SCREEN = 'CHOOSE_SCREEN';
+
+
 
 

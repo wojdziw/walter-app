@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet } from 'react-native';
+import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { Header, Buttons } from '../components'
 
 import { connect } from 'react-redux'
@@ -18,8 +18,7 @@ class Tables extends Component {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Header />
-        
-        <View style={styles.mainContainer} >
+        <TouchableOpacity style={styles.mainContainer}>
           <View style={[{flex:1}, styles.description]}>
             <Text
               style={{fontSize: 20, color: colors.dark}}>
@@ -34,7 +33,7 @@ class Tables extends Component {
               value={this.props.tableNumber}
             />
           </View>
-        </View>
+        </TouchableOpacity>
 
         <Buttons
         nextName = "menu"
