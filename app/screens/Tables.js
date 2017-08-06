@@ -31,7 +31,8 @@ export default class Tables extends Component {
 
           <View style={[{flex: 3}, styles.picker]}>
             <TextInput
-              style={{height: 50, width: 250, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, justifyContent: 'center', alignItems: 'center', paddingLeft: 20}}
+              style={{height: 50, width: 250, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
+              keyboardType="numeric"
               onChangeText={(text) => {this.setState({text})}}
               value={this.state.text}
             />
@@ -60,6 +61,8 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flex: 1, 
-    backgroundColor: colors.background
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
