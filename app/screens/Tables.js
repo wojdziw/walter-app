@@ -40,7 +40,7 @@ class Tables extends Component {
         nextName = "menu"
         displayPrev={false}
         displayNext={true}
-        onPressNext={() => {console.log('Menu')}} />
+        onPressNext={() => this.props.chooseScreen('Menu')} />
       </View>
     );
   }
@@ -51,7 +51,7 @@ function mapDispatchToProps(dispatch) {
 }
 function mapStateToProps(state) {
   return {
-    tableNumber: state.tableNumber,
+    tableNumber: state.tableNumber
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tables);

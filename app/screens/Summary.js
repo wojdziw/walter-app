@@ -40,8 +40,8 @@ class Summary extends Component {
         nextName = "payment"
         displayPrev={true}
         displayNext={this.props.order.total>0 && true}
-        onPressPrev={() => {console.log('Menu')}}
-        onPressNext={() => {console.log('Payment')}}
+        onPressPrev={() => this.props.chooseScreen('Menu')}
+        onPressNext={() => this.props.chooseScreen('Payment')}
         />
       </View>
     );

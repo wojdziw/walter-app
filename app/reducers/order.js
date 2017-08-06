@@ -38,6 +38,7 @@ export const order = createReducer ({['id']: generateUUID(), ['total']: 0, ['tip
       menuPosition['count'] = 0;
       state.items[menuPosition.id] = menuPosition;
     })
+    state['total'] = 0;
     return state;
   },
   [types.SWITCH_TIP](state, action) {

@@ -40,7 +40,7 @@ class Menu extends Component {
 
         {(Object.keys(this.props.order.items).length == 0) && <Activity />} 
 
-        <TouchableOpacity onPress={() => console.log('Summary')}>
+        <TouchableOpacity onPress={() => this.props.chooseScreen('Summary')}>
           <Total {...this.props} />
         </TouchableOpacity>
         
@@ -49,8 +49,8 @@ class Menu extends Component {
         nextName = "summary"
         displayPrev={true}
         displayNext={true}
-        onPressPrev={() => {console.log('Tables')}}
-        onPressNext={() => {console.log('Summary')}}
+        onPressPrev={() => this.props.chooseScreen('Tables')}
+        onPressNext={() => this.props.chooseScreen('Summary')}
         />
       </View>
     );
