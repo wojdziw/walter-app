@@ -19,7 +19,7 @@ export default class ExampleApp extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React LDJSLKJDLKSD! ({platformText[Platform.OS]})
+          Wojtek jest super! ({platformText[Platform.OS]})
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.android.js
