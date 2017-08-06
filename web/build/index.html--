@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Native Web</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+  </head>
+  <body>
+    <div id="react-root"></div>
+  <script type="text/javascript" src="/javascript/vendor/react-e7bc459d049f0110.dll.js"></script><script type="text/javascript" src="/javascript/vendor/lib-522da25b958b983e.js"></script><script type="text/javascript" src="/javascript/app-522da25b958b983e.js"></script></body>
+</html>
