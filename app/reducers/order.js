@@ -2,7 +2,7 @@ import createReducer from '../config/createReducer'
 import * as types from '../actions/types'
 import generateUUID from '../config/uuid'
 
-export const tableNumber = createReducer(1, {
+export const tableNumber = createReducer("1", {
   [types.CHOOSE_TABLE](state, action) {
     return action.number;
   }
