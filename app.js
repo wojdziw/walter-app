@@ -10,7 +10,7 @@ export default class ExampleApp extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Tables />
+        <Menu />
       </Provider>
     );
   }
