@@ -11,8 +11,7 @@
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
 		"web:build": "npm run web:build:vendor && npm run web:build:app",
-		"start": "http-serve -p $PORT --gzip true ./web/build",
-		"heroku-postbuild": "webpack -p --config ./web/webpack.config.js --progress"
+		"start": "http-serve -p $PORT --gzip true ./web/build"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
