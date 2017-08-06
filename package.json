@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"starter": "node node_modules/react-native/local-cli/cli.js start",
+		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
 		"web:build:vendor-dev": "rm -rf web/vendor-dev; NODE_ENV=development webpack --config web/vendor.webpack.config.js || rm -rf web/vendor-dev",
 		"web": "[ -d web/vendor-dev ] || npm run web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 0.0.0.0 --port 3000 --config web/webpack.config.js --inline --hot --colors",
@@ -11,7 +11,7 @@
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
 		"web:build": "npm run web:build:vendor && npm run web:build:app",
-		"start": "http-serve -p $PORT --gzip true ./web/build"
+		"web:serve": "http-serve -p $PORT --gzip true ./web/build"
 	},
 	"dependencies": {
 		"express": "^4.15.3",
