@@ -11,7 +11,7 @@
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
 		"web:build": "npm run web:build:vendor && npm run web:build:app",
-		"web:serve": "http-serve -p $PORT --gzip true ./web/build"
+		"web:serve": "http-serve -p 3001 --gzip true ./web/build"
 	},
 	"dependencies": {
 		"express": "^4.15.3",
