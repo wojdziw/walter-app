@@ -14,6 +14,7 @@
 		"start": "http-serve -p $PORT --gzip true ./web/build"
 	},
 	"dependencies": {
+		"express": "^4.15.3",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.4",
 		"react-native-web": "^0.0.88"
