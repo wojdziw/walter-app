@@ -11,13 +11,17 @@
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
 		"web:build": "npm run web:build:vendor && npm run web:build:app",
-		"web:serve": "http-serve -p $PORT --gzip true ./web/build"
+		"web:serve": "http-serve -p 3001 --gzip true ./web/build"
 	},
 	"dependencies": {
 		"express": "^4.15.3",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.4",
-		"react-native-web": "^0.0.88"
+		"react-native-web": "^0.0.88",
+		"react-redux": "^5.0.5",
+		"redux": "^3.7.2",
+		"redux-logger": "^3.0.6",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"add-asset-html-webpack-plugin": "^2.0.1",
