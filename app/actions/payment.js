@@ -10,7 +10,7 @@ export function setPaymentUri(paymentUri) {
 export function fetchPaymentUri() {
   return(dispatch, getState) => {
 
-    fetch('http://sheltered-plateau-48256.herokuapp.com/getPaymentUri', {
+    fetch('https://sheltered-plateau-48256.herokuapp.com/getPaymentUri', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
