@@ -12,39 +12,39 @@ class Tables extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {tables: []};
   }
 
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Header />
 
-            <ScrollView style={styles.mainContainer} >
-              <View style={[{flex:1}, styles.description]}>
-                <Text
-                  style={{fontSize: 20, color: colors.dark}}>
-                  Please choose your table number below.
-                </Text>
-              </View>
+        <ScrollView style={styles.mainContainer} >
+          <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={[{flex:1}, styles.description]}>
+              <Text
+                style={{fontSize: 20, color: colors.dark}}>
+                Please choose your table number below.
+              </Text>
+            </View>
 
-              <View style={[{flex: 3}, styles.picker]}>
-                <TextInput
-                  style={{height: 50, width: 250, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
-                  onChangeText={(text) => {this.props.chooseTable(text.toString())}}
-                  value={this.props.tableNumber}
-                  keyboardType="numeric"
-                />
-              </View>
-            </ScrollView>
+            <View style={[{flex: 3}, styles.picker]}>
+              <TextInput
+                style={{height: 50, width: 250, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
+                onChangeText={(text) => {this.props.chooseTable(text.toString())}}
+                value={this.props.tableNumber}
+                keyboardType="numeric"
+              />
+            </View>
+          </View>
+        </ScrollView>
 
         <Buttons
         nextName = "menu"
         displayPrev={false}
         displayNext={true}
-        onPressNext={() => {return true ? this.props.chooseScreen('Menu') : this.props.navigation.navigate('Menu')}} />
+        onPressNext={() => this.props.chooseScreen('Menu')} />
       </View>
     );
   }

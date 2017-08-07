@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Platform } from 'react-native';
+import { Text, View, Platform, WebView } from 'react-native';
 import { Header, Buttons, Total, Activity } from '../components'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
@@ -12,12 +12,25 @@ class Payment extends Component {
     this.props.fetchPaymentUri();
   }
 
+  componentDidMount() {
+    interval = setInterval(() => { 
+      this.props.fetchOrderStatus();
+      console.log(this.props.orderStatus);
+      if (this.props.orderStatus == "COMPLETED" || this.props.orderStatus == "CANCELED") {
+        if (this.props.orderStatus == "COMPLETED") {
+          this.props.sendOrder();
+        }
+        clearInterval(interval);
+        this.props.chooseScreen('Outcome');
+      }
+    }, 3000);
+  }
+
   componentWillUnmount() {
     this.props.setPaymentUri("");
   }
 
   render() {
-
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Header />
@@ -29,9 +42,8 @@ class Payment extends Component {
         prevName = "summary"
         nextName = "outcome"
         displayPrev={true}
-        displayNext={Platform.OS=='web'}
+        displayNext={false}
         onPressPrev={() => this.props.chooseScreen('Menu')}
-        onPressNext={() => this.props.chooseScreen('Outcome')}
         />
       </View>
     );
@@ -39,20 +51,19 @@ class Payment extends Component {
 }
 
 const PaymentBrowser = ({uri}) => {
-  window.open(uri, '_blank');
   return (
     <View style={{flex:1, justifyContent: 'center', padding: 40}}>
-      <Text
-        style={{fontSize: 20, color: colors.dark}}>
-        Please complete your payment in the new tab and press 'outcome' below when done. {"\n"}{"\n"}
-        DO NOT REFRESH THIS PAGE
+      <Text style={{fontSize: 20, color: colors.dark}}>
+        Please follow the <a href={uri} target="_blank">payment link</a>.
+      </Text>
+      <Text style={{marginTop: 100, fontSize: 20, color: colors.dark, fontWeight: 'bold'}}>
+        Do not refresh this page!
       </Text>
     </View>
   );
 }
 
 const PaymentWebview = ({uri}) => {
-  window.open(uri, '_blank');
   return (
     <WebView
       source={{uri: uri}}
@@ -66,7 +77,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     paymentUri: state.paymentUri,
-    order: state.order
+    order: state.order,
+    orderStatus: state.orderStatus
     };
 }
 

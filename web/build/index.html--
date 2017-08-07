@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React Native Web</title>
+    <title>eWaiter.pl</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
   </head>
   <body>
     <div id="react-root"></div>
-  <script type="text/javascript" src="/javascript/vendor/react-e7bc459d049f0110.dll.js"></script><script type="text/javascript" src="/javascript/vendor/lib-769096814363a4d5.js"></script><script type="text/javascript" src="/javascript/app-769096814363a4d5.js"></script></body>
+  <script type="text/javascript" src="/javascript/vendor/react-e7bc459d049f0110.dll.js"></script><script type="text/javascript" src="/javascript/vendor/lib-9b9ab2ebfaaff10d.js"></script><script type="text/javascript" src="/javascript/app-9b9ab2ebfaaff10d.js"></script></body>
 </html>
