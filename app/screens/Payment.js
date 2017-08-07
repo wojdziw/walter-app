@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Platform } from 'react-native';
+import { Text, View, Platform, WebView } from 'react-native';
 import { Header, Buttons, Total, Activity } from '../components'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
