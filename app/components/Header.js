@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, Platform } from 'react-native';
 import colors from '../static/colors'
 
 export default class Header extends Component {
@@ -15,11 +15,11 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 80,
-    paddingBottom: 10, 
+    paddingTop: Platform.OS=='web' ? 0 : 10,
+    height: Platform.OS=='web' ? 60 : 80,
     backgroundColor: colors.background,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 1.0,
     borderBottomColor: colors.light,

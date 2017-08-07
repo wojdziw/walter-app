@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Platform } from 'react-native';
 import { Header, Buttons, Total, Activity } from '../components'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
@@ -21,30 +21,42 @@ class Payment extends Component {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Header />
-        {(this.props.paymentUri != "") && <PayU uri={this.props.paymentUri}/>}
+        {(this.props.paymentUri != "") && Platform.OS == 'web' && <PaymentBrowser uri={this.props.paymentUri}/>}
+        {(this.props.paymentUri != "") && Platform.OS != 'web' && <PaymentWebview uri={this.props.paymentUri}/>}
         {(this.props.paymentUri == "") && <Activity />}
         <Total {...this.props} />
         <Buttons
         prevName = "summary"
-        nextName = "Pay!"
+        nextName = "outcome"
         displayPrev={true}
-        displayNext={false}
+        displayNext={Platform.OS=='web'}
         onPressPrev={() => this.props.chooseScreen('Menu')}
+        onPressNext={() => this.props.chooseScreen('Outcome')}
         />
       </View>
     );
   }
 }
 
-const PayU = ({uri}) => {
+const PaymentBrowser = ({uri}) => {
   window.open(uri, '_blank');
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex:1, justifyContent: 'center', padding: 40}}>
       <Text
         style={{fontSize: 20, color: colors.dark}}>
-        Please complete your payment in the new tab.
+        Please complete your payment in the new tab and press 'outcome' below when done. {"\n"}{"\n"}
+        DO NOT REFRESH THIS PAGE
       </Text>
     </View>
+  );
+}
+
+const PaymentWebview = ({uri}) => {
+  window.open(uri, '_blank');
+  return (
+    <WebView
+      source={{uri: uri}}
+    />
   );
 }
 

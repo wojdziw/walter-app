@@ -45,7 +45,7 @@ export function initializeMenu(jsonString) {
 
 export function fetchMenu() {
   return(dispatch, getState) => {
-    fetch('https://sheltered-plateau-48256.herokuapp.com/getMenuPositions')
+    fetch('https://sheltered-plateau-48256.herokuapp.com/getMenuPositions/')
     .then(response => {
     return response.text()
     })
