@@ -54,7 +54,7 @@ const PaymentBrowser = ({uri}) => {
   return (
     <View style={{flex:1, justifyContent: 'center', padding: 40}}>
       <Text style={{fontSize: 20, color: colors.dark}}>
-        Please follow the <a href={uri} target="_blank">payment link.</a>
+        Please follow the <a href={uri} target="_blank">payment link</a>.
       </Text>
       <Text style={{marginTop: 100, fontSize: 20, color: colors.dark, fontWeight: 'bold'}}>
         Do not refresh this page!
