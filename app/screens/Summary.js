@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import colors from '../static/colors'
 
 class Summary extends Component {
-
   render() {
 
     return (
