@@ -1,11 +1,11 @@
 import { StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-import Menu from '../screens/Menu'
-import Tables from '../screens/Tables'
-import Summary from '../screens/Summary'
-import Payment from '../screens/Payment'
-import Outcome from '../screens/Outcome'
+import Menu from './screens/Menu'
+import Tables from './screens/Tables'
+import Summary from './screens/Summary'
+import Payment from './screens/Payment'
+import Outcome from './screens/Outcome'
 
 export default StackNavigator({
   Home: { 
