@@ -39,13 +39,14 @@ class Payment extends Component {
 }
 
 const PaymentBrowser = ({uri}) => {
-  window.open(uri, '_blank');
   return (
     <View style={{flex:1, justifyContent: 'center', padding: 40}}>
-      <Text
-        style={{fontSize: 20, color: colors.dark}}>
-        Please complete your payment in the new tab and press 'outcome' below when done. {"\n"}{"\n"}
-        DO NOT REFRESH THIS PAGE
+      <Text style={{fontSize: 20, color: colors.dark}}>
+        Please follow the <a href={uri} target="_blank">payment link</a>{"\n"}
+        and press 'outcome' below when done.
+      </Text>
+      <Text style={{marginTop: 100, fontSize: 20, color: colors.dark, fontWeight: 'bold'}}>
+        Do not refresh this page!
       </Text>
     </View>
   );
