@@ -45,14 +45,18 @@ class Summary extends Component {
 const TipAdder = ({switchTip, order}) => {
   return (
     <TouchableOpacity onPress={() => {switchTip()}}>
-      <View style={[styles.positionContainer, {backgroundColor: colors.medium, borderColor: colors.medium}]}>
+      <View style={[styles.positionContainer, {backgroundColor: colors.medium, borderWidth: 0, borderColor: colors.medium}]}>
         <View style={styles.positionNameContainer}>                
-          <Text style={[{flex: 6, color: colors.background}, styles.positionNameText]}>
-            { order.tip ? "Remove 10% tip" : "Add 10% tip" }
-          </Text>
-          <Text style={{flex: 4, fontSize: 15, color: colors.background}}>
-            { order.tip ? (order.total/11).toFixed(2) : (order.total*0.1).toFixed(2)} zł
-          </Text>
+          <View style={{flex: 6, paddingLeft: 20}}>
+            <Text style={{color: colors.background, fontSize: 18, fontWeight: 'bold'}}>
+              { order.tip ? "Remove 10% tip" : "Add 10% tip" }
+            </Text>
+          </View>
+          <View style={{flex: 4, alignItems: 'flex-end', marginRight: 20}}>
+            <Text style={{fontSize: 15, color: colors.background}}>
+              { order.tip ? (order.total/11).toFixed(2) : (order.total*0.1).toFixed(2)} zł
+            </Text>
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -61,15 +65,21 @@ const TipAdder = ({switchTip, order}) => {
 
 const Position = ({position}) => {
   return (
-    <View style={[styles.positionContainer, {backgroundColor: colors.background, borderColor: colors.light}]}>
+    <View style={[styles.positionContainer, {backgroundColor: colors.background, borderWidth: 1.0, borderColor: colors.light}]}>
       <View style={styles.positionNameContainer}>                
-        <Text style={[{flex: 6, color: colors.dark}, styles.positionNameText]}>
-          { position.name }
-        </Text>
-        <Text style={{flex: 4, fontSize: 15, color: colors.dark}}>
-          { position.count } x { position.price } zł {"\n"}
-          ={ (position.count*position.price).toFixed(2) } zł
-        </Text>
+        <View style={{flex: 6, paddingLeft: 20}}>
+          <Text style={{color: colors.dark, fontSize: 18, fontWeight: 'bold'}}>
+            { position.name }
+          </Text>
+        </View>
+        <View style={{flex: 4, alignItems: 'flex-end', marginRight: 20}}>
+          <Text style={{fontSize: 15, color: colors.dark}}>
+            { position.count } x { position.price } zł
+          </Text>
+          <Text style={{fontSize: 15, color: colors.dark}}>
+            = { (position.count*position.price).toFixed(2) } zł
+          </Text>
+        </View>
       </View>
     </View>
   )
@@ -89,8 +99,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Summary);
 const styles = StyleSheet.create({
   positionContainer: {
     margin: 4, 
-    borderRadius: 8, 
-    borderWidth: 1.0
+    borderRadius: 8
   },
   positionNameContainer: {
     height: 50, 
@@ -98,11 +107,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
-  positionNameText: {
-    paddingLeft: 20, 
-    fontSize: 18, 
-    fontWeight: 'bold', 
-  }
 })
 
 

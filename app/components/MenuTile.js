@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background, 
     flexDirection: 'row', 
     paddingTop: 8,
-    height: 40
+    height: 45
   },
   tile: {
     backgroundColor: colors.background, 
