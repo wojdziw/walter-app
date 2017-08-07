@@ -53,7 +53,6 @@ const PaymentBrowser = ({uri}) => {
 }
 
 const PaymentWebview = ({uri}) => {
-  window.open(uri, '_blank');
   return (
     <WebView
       source={{uri: uri}}

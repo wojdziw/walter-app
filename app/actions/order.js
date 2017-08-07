@@ -62,7 +62,7 @@ export function sendOrder() {
     order['time'] = new Date().toISOString();
     order['status'] = 0;
 
-    fetch('http://rocky-garden-79199.herokuapp.com/postOrder', {
+    fetch('https://rocky-garden-79199.herokuapp.com/postOrder', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

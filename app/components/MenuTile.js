@@ -7,7 +7,7 @@ export default class MenuTile extends Component {
     return (
       <View style={[styles.tile, {flex: 1}]}>
         <Image style={[styles.image, {flex: 3}]} source={{uri: this.props.order.items[this.props.id].url}} />
-        <View style={[styles.tileInfo, {flex: 1}]}>
+        <View style={styles.tileInfo}>
           <Quantity flex={15} quantity={this.props.order.items[this.props.id].count} />
           <NamePrice flex={35} name={this.props.order.items[this.props.id].name} price={this.props.order.items[this.props.id].price} />
           <PlusMinusButton flex={23} onPress={() => {this.props.plusMenuPositionCount(this.props.id)}} isPlus={true} />
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
   tileInfo: {
     backgroundColor: colors.background, 
     flexDirection: 'row', 
-    paddingTop: 8
+    paddingTop: 8,
+    height: 40
   },
   tile: {
     backgroundColor: colors.background, 
