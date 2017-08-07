@@ -34,6 +34,12 @@ export function switchTip() {
   }
 }
 
+export function changeId() {
+  return {
+    type: types.CHANGE_ID
+  }
+}
+
 export function initializeMenu(jsonString) {
   return(dispatch, getState) => {
     const jsonData = JSON.parse(jsonString);
