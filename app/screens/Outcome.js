@@ -26,9 +26,6 @@ class Outcome extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-    const { goBack } = this.props.navigation;
-
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Header />
