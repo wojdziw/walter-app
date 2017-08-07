@@ -9,19 +9,11 @@ import colors from '../static/colors'
 
 class Outcome extends Component {
 
-  componentDidMount() {
-    interval = setInterval(() => { 
-      this.props.fetchOrderStatus();
-      if (this.props.orderStatus == "COMPLETED" || this.props.orderStatus == "CANCELED") {
-        if (this.props.orderStatus == "COMPLETED") {
-          this.props.sendOrder();
-        }
-        clearInterval(interval);
-      }
-    }, 200);
-  }
-
   componentWillUnmount() {
+    // have to update the id, otherwise failed transaction refreshes to Canceled in payment
+    if (this.props.orderStatus == "CANCELED") {
+      this.props.changeId()
+    }
     this.props.updateOrderStatus("")
   }
 
@@ -57,7 +49,7 @@ class Outcome extends Component {
         displayPrev={this.props.orderStatus == 'CANCELED'}
         displayNext={this.props.orderStatus == 'COMPLETED'}
         onPressPrev={() => this.props.chooseScreen('Summary')}
-        onPressNext={() => location.reload()}
+        onPressNext={() => {return Platform.OS=='web' ? location.reload() : this.props.chooseScreen('Tables')}}
         />
       </View>
     );

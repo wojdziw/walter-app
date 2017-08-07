@@ -52,5 +52,8 @@ export const order = createReducer ({['id']: generateUUID(), ['total']: 0, ['tip
       }
     }
     return {...state, ['tip']: !include, ['total']: total}
-  }
+  },
+  [types.CHANGE_ID](state, action) {
+    return {...state, ['id']: generateUUID()}
+  },
 })
