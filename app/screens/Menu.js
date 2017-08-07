@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import { Header, Buttons, Total, Activity, MenuTile } from '../components'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
@@ -8,26 +8,13 @@ import colors from '../static/colors'
 
 class Menu extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {menuItemsLength: 0}
-  }
-
   componentWillMount() {
-    this.props.fetchMenu();
-  }
-
-  componentDidMount() {
-    refreshPositions = setInterval(() => 
-      {this.setState({menuPositionsLength: Object.keys(this.props.order.items).length}); 
-      if(this.state.menuItemsLength>0) {
-        clearInterval(refreshPositions);
-      }
-      }, 500);
-  }
-  
-  componentWillUnmount() {
-    clearInterval(refreshPositions);
+    if (Object.keys(this.props.order.items).length == 0) {
+      this.props.fetchMenu();
+    }
+    if (this.props.order.tip) {
+      this.props.switchTip();
+    }
   }
 
   render() {

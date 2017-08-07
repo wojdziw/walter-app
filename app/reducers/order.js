@@ -34,12 +34,12 @@ export const order = createReducer ({['id']: generateUUID(), ['total']: 0, ['tip
     return {...state, ['items']: items, ['total']: total}
   },
   [types.INITIALIZE_MENU_POSITIONS](state, action) {
+    let items = {}
     action.menuPositions.forEach( (menuPosition) => {
       menuPosition['count'] = 0;
-      state.items[menuPosition.id] = menuPosition;
+      items[menuPosition.id] = menuPosition;
     })
-    state['total'] = 0;
-    return state;
+    return {...state, ['items']: items, ['total']: 0};
   },
   [types.SWITCH_TIP](state, action) {
     let include = state['tip'];

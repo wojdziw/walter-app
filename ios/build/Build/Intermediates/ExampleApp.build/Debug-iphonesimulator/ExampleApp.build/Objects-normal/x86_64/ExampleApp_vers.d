@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/wojciechdziwulski/Coding/react-native-web-webpack/ios/build/Build/Intermediates/ExampleApp.build/Debug-iphonesimulator/ExampleApp.build/DerivedSources/ExampleApp_vers.c
+  /Users/wojciechdziwulski/Coding/WaiterAppWeb/ios/build/Build/Intermediates/ExampleApp.build/Debug-iphonesimulator/ExampleApp.build/DerivedSources/ExampleApp_vers.c

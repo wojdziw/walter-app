@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { Header, Buttons, Total } from '../components'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
@@ -8,12 +8,6 @@ import { connect } from 'react-redux'
 import colors from '../static/colors'
 
 class Summary extends Component {
-
-  componentWillUnmount() {
-    if (this.props.order.tip) {
-      this.props.switchTip();
-    }
-  }
 
   render() {
 
