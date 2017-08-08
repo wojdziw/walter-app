@@ -39,7 +39,7 @@ export function updateOrderStatus(orderStatus) {
 
 export function fetchOrderStatus() {
   return(dispatch, getState) => {
-    fetch('https://sheltered-plateau-48256.herokuapp.com/getTransactionstatus', {
+    fetch('https://sheltered-plateau-48256.herokuapp.com/getTransactionStatus', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
