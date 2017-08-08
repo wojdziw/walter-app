@@ -10,7 +10,7 @@ import colors from '../static/colors'
 
 class Tables extends Component {
   componentWillMount() {
-    this.props.chooseTable(1);
+    this.props.chooseTable("1");
     this.props.fetchMenu();
   }
 
