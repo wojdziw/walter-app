@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>www.digicert.com.org.reactjs.native.example.ExampleApp</string>
+	<string>3479H53QZ4.com.wojciechdziwulski.ewaiter</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>www.digicert.com.org.reactjs.native.example.ExampleApp</string>
+		<string>3479H53QZ4.com.wojciechdziwulski.ewaiter</string>
 	</array>
 </dict>
 </plist>
