@@ -49,7 +49,7 @@ class Outcome extends Component {
         displayPrev={this.props.orderStatus == 'CANCELED'}
         displayNext={this.props.orderStatus == 'COMPLETED'}
         onPressPrev={() => this.props.chooseScreen('Summary')}
-        onPressNext={() => {return Platform.OS=='web' ? location.reload() : this.props.chooseScreen('Tables')}}
+        onPressNext={() => this.props.chooseScreen('Tables')}
         />
       </View>
     );

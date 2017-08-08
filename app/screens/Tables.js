@@ -9,10 +9,9 @@ import { bindActionCreators } from 'redux'
 import colors from '../static/colors'
 
 class Tables extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {tables: []};
+  componentWillMount() {
+    this.props.chooseTable(1);
+    this.props.fetchMenu();
   }
 
   render() {

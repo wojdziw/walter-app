@@ -9,9 +9,6 @@ import colors from '../static/colors'
 class Menu extends Component {
 
   componentWillMount() {
-    if (Object.keys(this.props.order.items).length == 0) {
-      this.props.fetchMenu();
-    }
     if (this.props.order.tip) {
       this.props.switchTip();
     }
