@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   statusesContainer: {
     flex: 1, 
     paddingTop: 20, 
-    paddingBottom: 50, 
+    paddingBottom: 35, 
     backgroundColor: colors.background
   }
 })
