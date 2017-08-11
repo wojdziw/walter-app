@@ -33,7 +33,7 @@ class Tables extends Component {
 
             <View style={[{flex: 3}, styles.picker]}>
               <TextInput
-                style={{height: 50, width: 200, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
+                style={{height: 50, width: 100, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
                 onChangeText={(text) => {this.props.chooseTable(text.toString())}}
                 value={this.props.tableNumber}
                 keyboardType="numeric"
