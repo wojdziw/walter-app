@@ -20,7 +20,12 @@ class Outcome extends Component {
   render() {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
-        <Header />
+        <Buttons
+        prevName = {this.props.orderStatus == 'CANCELED' ? "←" : ""}
+        nextName = {this.props.orderStatus == 'CANCELED' ? "" : "start"}
+        onPressPrev={() => this.props.chooseScreen('Menu')}
+        onPressNext={() => this.props.chooseScreen('Tables')}
+        />
 
         {!(this.props.orderStatus == "COMPLETED" || this.props.orderStatus == "CANCELED") &&
           <Activity />}
@@ -42,15 +47,6 @@ class Outcome extends Component {
               />
             </View>
           </View>}
-
-        <Buttons
-        prevName = "summary"
-        nextName = "start again"
-        displayPrev={this.props.orderStatus == 'CANCELED'}
-        displayNext={this.props.orderStatus == 'COMPLETED'}
-        onPressPrev={() => this.props.chooseScreen('Summary')}
-        onPressNext={() => this.props.chooseScreen('Tables')}
-        />
       </View>
     );
   }

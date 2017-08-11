@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Picker, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { Text, View, Picker, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { Header, Buttons } from '../components'
 
 import { connect } from 'react-redux'
@@ -17,7 +17,10 @@ class Tables extends Component {
   render() {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
-        <Header />
+        <Buttons
+        prevName = ""
+        nextName = ""
+        />
 
         <ScrollView style={styles.mainContainer} >
           <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -30,20 +33,23 @@ class Tables extends Component {
 
             <View style={[{flex: 3}, styles.picker]}>
               <TextInput
-                style={{height: 50, width: 250, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
+                style={{height: 50, width: 200, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center'}}
                 onChangeText={(text) => {this.props.chooseTable(text.toString())}}
                 value={this.props.tableNumber}
                 keyboardType="numeric"
               />
+              <TouchableOpacity style={styles.button} onPress={() => this.props.chooseScreen('Menu')}> 
+                <Text style={styles.text}>
+                  ok
+                </Text>
+              </TouchableOpacity>
             </View>
+
+            
           </View>
         </ScrollView>
 
-        <Buttons
-        nextName = "menu"
-        displayPrev={false}
-        displayNext={true}
-        onPressNext={() => this.props.chooseScreen('Menu')} />
+        
       </View>
     );
   }
@@ -63,6 +69,7 @@ const styles = StyleSheet.create({
   picker: {
     alignItems: 'center', 
     justifyContent: 'center', 
+    flexDirection: 'row',
     paddingTop: 100
   },
   description: {
@@ -72,5 +79,20 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1, 
     backgroundColor: colors.background
+  },
+  button: {
+    marginLeft: 10,
+    width: 50,
+    height: 50, 
+    borderRadius: 4,
+    backgroundColor: colors.medium,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  text: {
+    fontSize: 18,
+    color: colors.background,
+    fontWeight: 'bold'
   }
 })
