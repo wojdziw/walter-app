@@ -10,17 +10,7 @@ export function setPaymentUri(paymentUri) {
 export function fetchPaymentUri() {
   return(dispatch, getState) => {
 
-    fetch('https://sheltered-plateau-48256.herokuapp.com/getPaymentUri', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'totalAmount': (getState().order.total*100).toFixed(0),
-        'id': getState().order.id
-      })
-    })
+    fetch('https://sheltered-plateau-48256.herokuapp.com/getPaymentUri?id='+getState().order.id+'&totalAmount='+(getState().order.total*100).toFixed(0))
     .then(response => {
     return response.text()
     })
@@ -39,16 +29,7 @@ export function updateOrderStatus(orderStatus) {
 
 export function fetchOrderStatus() {
   return(dispatch, getState) => {
-    fetch('https://sheltered-plateau-48256.herokuapp.com/getTransactionStatus', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'id': getState().order.id
-      })
-    })
+    fetch('https://sheltered-plateau-48256.herokuapp.com/getTransactionStatus?id='+getState().order.id)
     .then(response => {
     return response.text()
     })
