@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   buttonContainer: {
-    flex: 1,
     justifyContent: 'center'
   },
   button: {

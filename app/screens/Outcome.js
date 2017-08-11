@@ -22,8 +22,8 @@ class Outcome extends Component {
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <Buttons
         prevName = {this.props.orderStatus == 'CANCELED' ? "←" : ""}
-        nextName = {this.props.orderStatus == 'CANCELED' ? "" : "start"}
-        onPressPrev={() => this.props.chooseScreen('Menu')}
+        nextName = {this.props.orderStatus == 'CANCELED' ? "" : "↻"}
+        onPressPrev={() => this.props.chooseScreen('Payment')}
         onPressNext={() => this.props.chooseScreen('Tables')}
         />
 
