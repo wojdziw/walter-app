@@ -11,7 +11,11 @@ class Summary extends Component {
   render() {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
-        <Header />
+        <Buttons
+        prevName = "←"
+        nextName = ""
+        onPressPrev={() => this.props.chooseScreen('Menu')}
+        />
 
         <ScrollView style={{paddingTop: 8, paddingLeft: 8, paddingRight: 8, flex: 1, backgroundColor: colors.background }}>
           <TipAdder switchTip={this.props.switchTip} order={this.props.order}/>
@@ -25,16 +29,9 @@ class Summary extends Component {
 
         </ScrollView>
 
-        <Total {...this.props} />
+        <Total onPress={() => this.props.chooseScreen('Payment')} text={"pay"} {...this.props} />
 
-        <Buttons
-        prevName = "menu"
-        nextName = "payment"
-        displayPrev={true}
-        displayNext={this.props.order.total>0 && true}
-        onPressPrev={() => this.props.chooseScreen('Menu')}
-        onPressNext={() => this.props.chooseScreen('Payment')}
-        />
+        
       </View>
     );
   }
