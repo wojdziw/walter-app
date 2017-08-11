@@ -17,24 +17,18 @@ class Menu extends Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <Header />
+        <Buttons
+        prevName = "←"
+        nextName = ""
+        onPressPrev={() => this.props.chooseScreen('Tables')}
+        />
 
         {(Object.keys(this.props.order.items).length > 0) && <MenuTiles {...this.props}/>}
 
         {(Object.keys(this.props.order.items).length == 0) && <Activity />} 
 
-        <TouchableOpacity onPress={() => this.props.chooseScreen('Summary')}>
-          <Total {...this.props} />
-        </TouchableOpacity>
-        
-        <Buttons
-        prevName = "table"
-        nextName = "summary"
-        displayPrev={true}
-        displayNext={true}
-        onPressPrev={() => this.props.chooseScreen('Tables')}
-        onPressNext={() => this.props.chooseScreen('Summary')}
-        />
+        <Total onPress={() => this.props.chooseScreen('Summary')} text={"cart"} {...this.props} />
+      
       </View>
     );
   }

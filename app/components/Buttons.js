@@ -1,65 +1,57 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Platform, Image } from 'react-native';
 import colors from '../static/colors'
 
 export default class Buttons extends Component {
   render() {
     return (
       <View style={styles.buttonsContainer}>
-        <NavButton displayMe={this.props.displayPrev} onPress={this.props.onPressPrev} left={true} leftText={"<"} rightText={this.props.prevName} leftFlex={1} rightFlex={3}/>
-        <NavButton displayMe={this.props.displayNext} onPress={this.props.onPressNext} left={false} leftText={this.props.nextName} rightText={">"} leftFlex={3} rightFlex={1}/>
+        <NavButton onPress={this.props.onPressPrev} left={true} text={this.props.prevName} />
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+          <Image style={{height: 25, width: 160}} source={require('../static/logo.png')}/>
+        </View>
+        <NavButton onPress={this.props.onPressNext} left={false} text={this.props.nextName} />
       </View>
     )
   }
 }
 
-const NavButton = ({leftText, rightText, leftFlex, rightFlex, displayMe, onPress, left}) => {
+const NavButton = ({text, onPress, left}) => {
   return (
     <View style={[styles.buttonContainer, {alignItems: left ? 'flex-start' : 'flex-end'}]}>
-      {displayMe && 
-        <TouchableOpacity style={styles.button} onPress={onPress}> 
-          <NavButtonRegion flex={leftFlex} text={leftText}/>
-          <NavButtonRegion flex={rightFlex} text={rightText}/>
-        </TouchableOpacity>
-      }
+      <TouchableOpacity style={[styles.button, {justifyContent: left ? 'flex-start' : 'flex-end'}]} onPress={onPress}> 
+        <Text style={styles.text}>
+          {text}
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
 
-const NavButtonRegion = ({flex, text}) => {
-  return (
-      <View style={{justifyContent: 'center', alignItems: 'center', flex: flex}}>
-        <Text style={styles.text}>
-          {text}
-        </Text>
-      </View>
-    )
-}
-
 const styles = StyleSheet.create({
   buttonsContainer: {
-    height: 60,
+    paddingTop: Platform.OS=='web' ? 0 : 10,
+    height: Platform.OS=='web' ? 50 : 60,
     backgroundColor: colors.medium,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   buttonContainer: {
-    flex: 1,
     justifyContent: 'center'
   },
   button: {
     marginRight: 10,
     marginLeft: 10,
-    width: 130,
-    height: 40, 
+    width: 50,
+    height: 30, 
     borderRadius: 4,
-    backgroundColor: colors.background,
+    backgroundColor: colors.medium,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
   },
   text: {
     fontSize: 18,
-    color: colors.dark
+    color: colors.background,
+    fontWeight: 'bold'
   }
 })
 
