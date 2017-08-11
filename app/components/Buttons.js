@@ -7,7 +7,7 @@ export default class Buttons extends Component {
     return (
       <View style={styles.buttonsContainer}>
         <NavButton onPress={this.props.onPressPrev} left={true} text={this.props.prevName} />
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
           <Image style={{height: 25, width: 160}} source={require('../static/logo.png')}/>
         </View>
         <NavButton onPress={this.props.onPressNext} left={false} text={this.props.nextName} />
