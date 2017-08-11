@@ -8,5 +8,5 @@
   </head>
   <body>
     <div id="react-root"></div>
-  <script type="text/javascript" src="/javascript/vendor/react-e7bc459d049f0110.dll.js"></script><script type="text/javascript" src="/javascript/vendor/lib-b42fd6bee160dc8b.js"></script><script type="text/javascript" src="/javascript/app-b42fd6bee160dc8b.js"></script></body>
+  <script type="text/javascript" src="/javascript/vendor/react-e7bc459d049f0110.dll.js"></script><script type="text/javascript" src="/javascript/vendor/lib-b446737a6808467a.js"></script><script type="text/javascript" src="/javascript/app-b446737a6808467a.js"></script></body>
 </html>
