@@ -33,18 +33,14 @@ class Payment extends Component {
   render() {
     return (
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
-        <Header />
+        <Buttons
+        prevName = "←"
+        nextName = ""
+        onPressPrev={() => this.props.chooseScreen('Summary')}
+        />
         {(this.props.paymentUri != "") && Platform.OS == 'web' && <PaymentBrowser uri={this.props.paymentUri}/>}
         {(this.props.paymentUri != "") && Platform.OS != 'web' && <PaymentWebview uri={this.props.paymentUri}/>}
         {(this.props.paymentUri == "") && <Activity />}
-        <Total {...this.props} />
-        <Buttons
-        prevName = "summary"
-        nextName = "outcome"
-        displayPrev={true}
-        displayNext={false}
-        onPressPrev={() => this.props.chooseScreen('Menu')}
-        />
       </View>
     );
   }
