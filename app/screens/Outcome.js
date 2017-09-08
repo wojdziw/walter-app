@@ -23,8 +23,8 @@ class Outcome extends Component {
         <Buttons
         prevName = {this.props.transactionStatus == 'CANCELED' ? "←" : ""}
         nextName = {this.props.transactionStatus == 'CANCELED' ? "" : "↻"}
-        onPressPrev={() => this.props.chooseScreen('Summary')}
-        onPressNext={() => this.props.chooseScreen('Tables')}
+        onPressPrev={() => Platform.OS == 'web' ? this.props.chooseScreen('Summary') : this.props.navigation.goBack()}
+        onPressNext={() => Platform.OS == 'web' ? this.props.chooseScreen('Tables') : this.props.navigation.goBack()}
         />
 
         {!(this.props.transactionStatus == "COMPLETED" || this.props.transactionStatus == "CANCELED") &&

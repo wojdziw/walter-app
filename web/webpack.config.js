@@ -97,7 +97,8 @@ module.exports = {
   plugins: plugins,
   resolve: {
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'react-navigation': 'react-navigation/lib/react-navigation.js',
     },
     extensions: [".web.js", ".js", ".json"]
   }

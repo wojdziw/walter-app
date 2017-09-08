@@ -20,14 +20,14 @@ class Menu extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Tables')}
+        onPressPrev={() => Platform.OS == 'web' ? this.props.chooseScreen('Tables') : this.props.navigation.goBack()}
         />
 
         {(Object.keys(this.props.order.items).length > 0) && <MenuTiles {...this.props}/>}
 
         {(Object.keys(this.props.order.items).length == 0) && <Activity />} 
 
-        <Total onPress={() => this.props.chooseScreen('Summary')} text={"cart"} {...this.props} />
+        <Total onPress={() => Platform.OS == 'web' ? this.props.chooseScreen('Summary') : this.props.navigation.navigate('Summary')} text={"cart"} {...this.props} />
       
       </View>
     );

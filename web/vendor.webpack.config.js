@@ -29,8 +29,8 @@ module.exports = {
   entry: {
     // Put react-native-web / react dependencies in here.
     'react': [
-      'react-native-web',
-    ],
+      'react-native-web'
+    ]
     // Put any other other core libs in here. (immutable, redux, localforage, etc.)
     // 'core': [
     // ],

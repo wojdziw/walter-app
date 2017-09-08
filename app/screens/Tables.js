@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Picker, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Picker, StyleSheet, TextInput, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import { Header, Buttons } from '../components'
 
 import { connect } from 'react-redux'
@@ -38,11 +38,14 @@ class Tables extends Component {
                 value={this.props.tableNumber}
                 keyboardType="numeric"
               />
-              <TouchableOpacity style={styles.button} onPress={() => this.props.chooseScreen('Menu')}> 
+              <TouchableOpacity 
+                style={styles.button} 
+                onPress={() => Platform.OS == 'web' ? this.props.chooseScreen('Menu') : this.props.navigation.navigate('Menu')}> 
                 <Text style={styles.text}>
                   ok
                 </Text>
               </TouchableOpacity>
+
             </View>
 
             
