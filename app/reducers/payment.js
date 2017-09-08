@@ -8,9 +8,9 @@ export const paymentUri = createReducer("", {
   },
 })
 
-export const orderStatus = createReducer("", {
-  [types.UPDATE_ORDER_STATUS](state, action) {
-    state = action.orderStatus;
+export const transactionStatus = createReducer("", {
+  [types.UPDATE_TRANSACTION_STATUS](state, action) {
+    state = action.transactionStatus;
     return state;
   }
 })
