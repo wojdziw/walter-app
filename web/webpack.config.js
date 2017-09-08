@@ -15,7 +15,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 
-const vendorConfig = require('./vendor.webpack.config.js')
+const vendorConfig = require('.config/vendor.webpack.config.js')
 const outputPath = path.join(__dirname, 'build')
 const publicPath = '/web/build'
 
