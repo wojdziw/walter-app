@@ -16,7 +16,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 
 const vendorConfig = require('./vendor.webpack.config.js')
-const outputPath = path.join(__dirname, '/build/')
+const outputPath = path.join(__dirname, 'build')
+const jsPath = path.join(outputPath, 'javascript')
 
 
 const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
@@ -28,7 +29,7 @@ const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
     filepath: require.resolve(paths[0]),
     includeSourcemap: false,
     outputPath: 'javascript/vendor',
-    publicPath: '/javascript/vendor',
+    publicPath: '/web/build/javascript/vendor',
   }
 })
 
@@ -90,9 +91,9 @@ module.exports = {
     ]
   },
   output: {
-    path: outputPath,
-    filename: 'javascript/[name]-[hash:16].js',
-    publicPath: '/'
+    path: jsPath,
+    filename: '[name]-[hash:16].js',
+    publicPath: jsPath,
   },
   plugins: plugins,
   resolve: {

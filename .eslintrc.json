@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "func-style": 0,
+        "jsx-a11y/href-no-hash": 0
+    }
+}
