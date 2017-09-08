@@ -61,4 +61,4 @@ module.exports = {
       query: { name: 'sounds/[name]-[hash:16].[ext]' },
     },
   ],
-}
+};

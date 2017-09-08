@@ -17,7 +17,7 @@ const OfflinePlugin = require('offline-plugin')
 
 const vendorConfig = require('./vendor.webpack.config.js')
 const outputPath = path.join(__dirname, 'build')
-const jsPath = path.join(outputPath, 'javascript')
+const publicPath = '/web/build'
 
 
 const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
@@ -28,8 +28,8 @@ const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
   return {
     filepath: require.resolve(paths[0]),
     includeSourcemap: false,
-    outputPath: 'javascript/vendor',
-    publicPath: '/web/build/javascript/vendor',
+    outputPath: 'js/vendor',
+    publicPath: '/web/build/js/vendor',
   }
 })
 
@@ -53,7 +53,7 @@ const plugins = [
 
   new CopyWebpackPlugin([
     // Workaround for AddAssetHtmlPlugin not copying compressed .gz files
-    { context: 'web/vendor/', from: '*.js.gz', to: 'javascript/vendor/' },
+    { context: 'web/vendor/', from: '*.js.gz', to: 'js/vendor/' },
   ]),
 
   // Split out any remaining node modules
@@ -91,9 +91,9 @@ module.exports = {
     ]
   },
   output: {
-    path: jsPath,
-    filename: '[name]-[hash:16].js',
-    publicPath: jsPath,
+    path: outputPath,
+    filename: 'js/[name]-[hash:16].js',
+    publicPath: publicPath,
   },
   plugins: plugins,
   resolve: {

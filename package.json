@@ -6,11 +6,12 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
 		"web:build:vendor-dev": "rm -rf web/vendor-dev; NODE_ENV=development webpack --config web/vendor.webpack.config.js || rm -rf web/vendor-dev",
-		"web": "[ -d web/vendor-dev ] || npm run web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 0.0.0.0 --port 3000 --config web/webpack.config.js --inline --hot --colors",
+		"web": "[ -d web/vendor-dev ] || yarn web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 0.0.0.0 --port 3000 --config web/webpack.config.js --inline --hot --colors",
 		"web:clean": "rm -rf web/vendor web/vendor-dev web/build",
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
-		"web:build": "npm run web:build:vendor && npm run web:build:app",
+		"web:build": "yarn web:build:vendor && yarn web:build:app",
+		"web:watch": "yarn web:build:vendor && webpack --config web/webpack.config.js -w",
 		"web:serve": "http-serve -p 3001 --gzip true ./web/build"
 	},
 	"dependencies": {
