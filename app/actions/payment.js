@@ -20,21 +20,21 @@ export function fetchPaymentUri() {
   }
 }
 
-export function updateOrderStatus(orderStatus) {
+export function updateTransactionStatus(transactionStatus) {
   return {
-    type: types.UPDATE_ORDER_STATUS,
-    orderStatus
+    type: types.UPDATE_TRANSACTION_STATUS,
+    transactionStatus
   }
 }
 
-export function fetchOrderStatus() {
+export function fetchTransactionStatus() {
   return(dispatch, getState) => {
     fetch('https://sheltered-plateau-48256.herokuapp.com/getTransactionStatus?id='+getState().order.id)
     .then(response => {
     return response.text()
     })
     .then((responseText) => {
-        dispatch(updateOrderStatus(responseText))
+        dispatch(updateTransactionStatus(responseText))
     })
   }
 }
