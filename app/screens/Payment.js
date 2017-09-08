@@ -14,16 +14,15 @@ class Payment extends Component {
 
   componentDidMount() {
     interval = setInterval(() => { 
-      this.props.fetchOrderStatus();
-      console.log(this.props.orderStatus);
-      if (this.props.orderStatus == "COMPLETED" || this.props.orderStatus == "CANCELED") {
-        if (this.props.orderStatus == "COMPLETED") {
+      this.props.fetchTransactionStatus();
+      if (this.props.transactionStatus == "COMPLETED" || this.props.transactionStatus == "CANCELED") {
+        if (this.props.transactionStatus == "COMPLETED") {
           this.props.sendOrder();
         }
         clearInterval(interval);
         this.props.chooseScreen('Outcome');
       }
-    }, 3000);
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -74,7 +73,7 @@ function mapStateToProps(state) {
   return {
     paymentUri: state.paymentUri,
     order: state.order,
-    orderStatus: state.orderStatus
+    transactionStatus: state.transactionStatus
     };
 }
 
