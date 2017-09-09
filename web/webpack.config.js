@@ -1,22 +1,23 @@
 /* eslint-disable */
-const enableOfflinePlugin = false
 
-const __DEV__ = process.env.NODE_ENV === 'development'
-const __OFFLINE__ = enableOfflinePlugin && !__DEV__
 
 const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack')
-const config = require('./shared.webpack.config.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const config = require('./config/shared.webpack.config.js');
+const vendorConfig = require('./config/vendor.webpack.config.js');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const OfflinePlugin = require('offline-plugin')
+const isDevelopment = process.env.NODE_ENV === 'development'
+const enableOfflinePlugin = false
+const isOffline = enableOfflinePlugin && !isDevelopment
 
-const vendorConfig = require('./vendor.webpack.config.js')
-const outputPath = path.join(__dirname, '/build/')
+const outputPath = path.join(__dirname, 'build')
+const publicPath = '/web/build'
 
 
 const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
@@ -27,8 +28,8 @@ const addAssetHtmlFiles = Object.keys(vendorConfig.entry).map((name) => {
   return {
     filepath: require.resolve(paths[0]),
     includeSourcemap: false,
-    outputPath: 'javascript/vendor',
-    publicPath: '/javascript/vendor',
+    outputPath: 'js/vendor',
+    publicPath: '/web/build/js/vendor',
   }
 })
 
@@ -37,22 +38,21 @@ const plugins = [
     new webpack.DllReferencePlugin({
       context: process.cwd(),
       manifest: require(path.join(vendorConfig.output.path, `${name}-manifest.json`)),
-    })),
-
+    })
+  ),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    __DEV__,
-    __OFFLINE__,
+    '__DEV__': isDevelopment,
+    '__OFFLINE__': isOffline,
   }),
   new HtmlWebpackPlugin({
     filename: 'index.html',
     template: 'web/templates/index.ejs',
   }),
   new AddAssetHtmlPlugin(addAssetHtmlFiles),
-
   new CopyWebpackPlugin([
     // Workaround for AddAssetHtmlPlugin not copying compressed .gz files
-    { context: 'web/vendor/', from: '*.js.gz', to: 'javascript/vendor/' },
+    { context: 'web/vendor/', from: '*.js.gz', to: 'js/vendor/' },
   ]),
 
   // Split out any remaining node modules
@@ -61,7 +61,7 @@ const plugins = [
     minChunks: module => module.context && module.context.indexOf('node_modules/') !== -1,
   }),
 
-  ...(__DEV__ ? [] : [
+  ...(isDevelopment ? [] : [
     ...config.productionPlugins,
 
     // Add any app-specific production plugins here.
@@ -69,7 +69,7 @@ const plugins = [
 ]
 
 // If offline plugin is enabled, it has to come last.
-if (__OFFLINE__) plugins.push(new OfflinePlugin())
+if (isOffline) plugins.push(new OfflinePlugin())
 
 module.exports = {
   devServer: {
@@ -91,8 +91,8 @@ module.exports = {
   },
   output: {
     path: outputPath,
-    filename: 'javascript/[name]-[hash:16].js',
-    publicPath: '/'
+    filename: 'js/[name]-[hash:16].js',
+    publicPath: publicPath,
   },
   plugins: plugins,
   resolve: {

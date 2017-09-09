@@ -1,34 +1,32 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies, global-require, import/no-dynamic-require  */
-/* eslint-disable no-underscore-dangle  */
-const __DEV__ = process.env.NODE_ENV === 'development'
+const path = require('path');
+const webpack = require('webpack');
+const config = require('./shared.webpack.config.js');
 
-const path = require('path')
-const webpack = require('webpack')
-const config = require('./shared.webpack.config.js')
-
+const isDevelopment = process.env.NODE_ENV === 'development';
 // We need a separate build for dev, which is unminified and includes PropTypes.
-const outputPath = path.join(__dirname, __DEV__ ? 'vendor-dev' : 'vendor')
-const outputFilename = __DEV__ ? '[name].dll.js' : '[name]-[hash:16].dll.js'
+const outputPath = path.join(__dirname, '..', isDevelopment ? 'vendor-dev' : 'vendor');
+const outputFilename = isDevelopment ? '[name].dll.js' : '[name]-[hash:16].dll.js';
 
 const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    __DEV__,
+    __DEV__: isDevelopment,
   }),
 
-  ...(__DEV__ ? [] : config.productionPlugins),
+  ...(isDevelopment ? [] : config.productionPlugins),
 
   new webpack.DllPlugin({
     name: '[name]',
     path: path.join(outputPath, '[name]-manifest.json'),
   }),
-]
+];
 
 module.exports = {
   entry: {
     // Put react-native-web / react dependencies in here.
-    'react': [
+    react: [
       'react-native-web',
     ],
     // Put any other other core libs in here. (immutable, redux, localforage, etc.)
@@ -53,4 +51,4 @@ module.exports = {
     },
     extensions: ['.web.js', '.js', '.json'],
   },
-}
+};

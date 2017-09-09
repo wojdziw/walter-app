@@ -1,12 +1,13 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
-const path = require('path')
-const webpack = require('webpack')
-const CompressionPlugin = require('compression-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   productionPlugins: [
     new webpack.optimize.AggressiveMergingPlugin(),
+
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
@@ -20,8 +21,9 @@ module.exports = {
         comments: false,
       },
       sourceMap: false,
-      exclude: [/\.min\.js$/gi],  // skip pre-minified libs
+      exclude: [/\.min\.js$/gi], // skip pre-minified libs
     }),
+
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'zopfli',
@@ -61,4 +63,4 @@ module.exports = {
       query: { name: 'sounds/[name]-[hash:16].[ext]' },
     },
   ],
-}
+};
