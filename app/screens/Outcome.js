@@ -6,6 +6,7 @@ import { ActionCreators } from '../actions'
 import { connect } from 'react-redux'
 import RNRestart from 'react-native-restart';
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Outcome extends Component {
 
@@ -23,8 +24,8 @@ class Outcome extends Component {
         <Buttons
         prevName = {this.props.transactionStatus == 'CANCELED' ? "←" : ""}
         nextName = {this.props.transactionStatus == 'CANCELED' ? "" : "↻"}
-        onPressPrev={() => this.props.chooseScreen('Summary')}
-        onPressNext={() => this.props.chooseScreen('Tables')}
+        onPressPrev={() => navigate('Summary', this.props, true)}
+        onPressNext={() => navigate('Home', this.props)}
         />
 
         {!(this.props.transactionStatus == "COMPLETED" || this.props.transactionStatus == "CANCELED") &&
