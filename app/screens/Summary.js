@@ -14,7 +14,7 @@ class Summary extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Menu')}
+        onPressPrev={() => Platform.OS == 'web' ? this.props.chooseScreen('Menu') : this.props.navigation.goBack()}
         />
 
         <ScrollView style={{paddingTop: 8, paddingLeft: 8, paddingRight: 8, flex: 1, backgroundColor: colors.background }}>
@@ -29,7 +29,7 @@ class Summary extends Component {
 
         </ScrollView>
 
-        <Total onPress={() => this.props.chooseScreen('Payment')} text={"pay"} {...this.props} />
+        <Total onPress={() => Platform.OS == 'web' ? this.props.chooseScreen('Payment') : this.props.navigation.navigate('Payment')} text={"pay"} {...this.props} />
 
         
       </View>

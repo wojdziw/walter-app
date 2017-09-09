@@ -20,7 +20,7 @@ class Payment extends Component {
           this.props.sendOrder();
         }
         clearInterval(interval);
-        this.props.chooseScreen('Outcome');
+        Platform.OS == 'web' ?  this.props.chooseScreen('Outcome') : this.props.navigation.navigate('Outcome');
       }
     }, 1000);
   }
@@ -35,7 +35,7 @@ class Payment extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Summary')}
+        onPressPrev={() => Platform.OS == 'web' ? this.props.chooseScreen('Summary') : this.props.navigation.goBack()}
         />
         {(this.props.paymentUri != "") && Platform.OS == 'web' && <PaymentBrowser uri={this.props.paymentUri}/>}
         {(this.props.paymentUri != "") && Platform.OS != 'web' && <PaymentWebview uri={this.props.paymentUri}/>}
