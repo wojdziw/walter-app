@@ -7,6 +7,7 @@ import { ActionCreators } from '../actions'
 import { bindActionCreators } from 'redux'
 
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Tables extends Component {
   componentWillMount() {
@@ -38,9 +39,9 @@ class Tables extends Component {
                 value={this.props.tableNumber}
                 keyboardType="numeric"
               />
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.button} 
-                onPress={() => Platform.OS == 'web' ? this.props.chooseScreen('Menu') : this.props.navigation.navigate('Menu')}> 
+                onPress={() => navigate('Menu', this.props)}> 
                 <Text style={styles.text}>
                   ok
                 </Text>
