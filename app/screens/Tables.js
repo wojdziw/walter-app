@@ -30,7 +30,7 @@ class Tables extends Component {
               </Text>
             </View>
 
-            <View style={[{flex: 3}, styles.picker]}>
+            <View style={[{ flex: 3 }, styles.picker]}>
               <TextInput
                 style={{ height: 50, width: 120, borderColor: colors.light, borderRadius: 5, borderWidth: 1, fontSize: 25, textAlign: 'center' }}
                 onChangeText={(text) => { this.props.chooseTable(text.toString()); }}

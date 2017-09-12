@@ -72,7 +72,7 @@ const TipAdder = ({ switchTip, order }) => (
 const Position = ({ position }) => (
   <View style={[
     styles.positionContainer,
-    { 
+    {
       backgroundColor: colors.background,
       borderWidth: 1.0,
       borderColor: colors.light,
