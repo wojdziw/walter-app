@@ -1,59 +1,59 @@
-import createReducer from '../config/createReducer'
-import * as types from '../actions/types'
-import generateUUID from '../config/uuid'
+import createReducer from '../config/createReducer';
+import * as types from '../actions/types';
+import generateUUID from '../config/uuid';
 
-export const tableNumber = createReducer("1", {
+export const tableNumber = createReducer('1', {
   [types.CHOOSE_TABLE](state, action) {
     return action.number;
-  }
-})
+  },
+});
 
-export const order = createReducer ({['id']: generateUUID(), ['total']: 0, ['tip']: false, ['items']: {}}, {
+export const order = createReducer({ id: generateUUID(), total: 0, tip: false, items: {} }, {
   [types.PLUS_MENU_POSITION_COUNT](state, action) {
-    let menuPosition = state.items[action.id];
+    const menuPosition = state.items[action.id];
 
-    let total = state['total'];
+    let total = state.total;
     menuPosition.count += 1;
     total += menuPosition.price;
 
-    let items = state.items;
+    const items = state.items;
     items[action.id] = menuPosition;
-    return {...state, ['items']: items, ['total']: total}
+    return { ...state, items, total };
   },
   [types.MINUS_MENU_POSITION_COUNT](state, action) {
-    let menuPosition = state.items[action.id];
+    const menuPosition = state.items[action.id];
 
-    let total = state['total'];
-    if (menuPosition.count-1>=0) {
+    let total = state.total;
+    if (menuPosition.count - 1 >= 0) {
       menuPosition.count -= 1;
       total -= menuPosition.price;
     }
 
-    let items = state.items;
+    const items = state.items;
     items[action.id] = menuPosition;
-    return {...state, ['items']: items, ['total']: total}
+    return { ...state, items, total };
   },
   [types.INITIALIZE_MENU_POSITIONS](state, action) {
-    let items = {}
-    action.menuPositions.forEach( (menuPosition) => {
-      menuPosition['count'] = 0;
+    const items = {};
+    action.menuPositions.forEach((menuPosition) => {
       items[menuPosition.id] = menuPosition;
-    })
-    return {...state, ['items']: items, ['total']: 0, ['id']: generateUUID()};
+      items[menuPosition.id].count = 0;
+    });
+    return { ...state, items, total: 0, id: generateUUID() };
   },
-  [types.SWITCH_TIP](state, action) {
-    let include = state['tip'];
-    let total = state['total'];
+  [types.SWITCH_TIP](state) {
+    const include = state.tip;
+    let total = state.total;
     if (total > 0) {
       if (include) {
-        total -= total/11;
+        total -= total / 11;
       } else {
-        total += 0.1*total;
+        total += 0.1 * total;
       }
     }
-    return {...state, ['tip']: !include, ['total']: total}
+    return { ...state, tip: !include, total };
   },
-  [types.CHANGE_ID](state, action) {
-    return {...state, ['id']: generateUUID()}
+  [types.CHANGE_ID](state) {
+    return { ...state, id: generateUUID() };
   },
-})
+});
