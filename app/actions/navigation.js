@@ -1,8 +1,8 @@
 import * as types from './types';
 
-export default function chooseScreen(name) {
+export function chooseScreen(name) {
   return {
     type: types.CHOOSE_SCREEN,
-    name,
+    name
   };
 }

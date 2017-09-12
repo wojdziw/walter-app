@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Header, Buttons, Activity } from '../components';
+import { Buttons, Activity } from '../components';
 import ActionCreators from '../actions';
 import colors from '../static/colors';
 import navigate from '../config/navigate';

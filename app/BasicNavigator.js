@@ -6,7 +6,7 @@ import Menu from './screens/Menu';
 import Summary from './screens/Summary';
 import Payment from './screens/Payment';
 import Outcome from './screens/Outcome';
-import { ActionCreators } from './actions';
+import ActionCreators from './actions';
 
 class BasicNavigator extends PureComponent {
   render() {
