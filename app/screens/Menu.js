@@ -5,14 +5,9 @@ import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
 import { connect } from 'react-redux'
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Menu extends Component {
-
-  componentWillMount() {
-    if (this.props.order.tip) {
-      this.props.switchTip();
-    }
-  }
 
   render() {
     return (
@@ -20,14 +15,14 @@ class Menu extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Tables')}
+        onPressPrev={() => navigate('Tables', this.props, true)}
         />
 
         {(Object.keys(this.props.order.items).length > 0) && <MenuTiles {...this.props}/>}
 
         {(Object.keys(this.props.order.items).length == 0) && <Activity />} 
 
-        <Total onPress={() => this.props.chooseScreen('Summary')} text={"cart"} {...this.props} />
+        <Total onPress={() => navigate('Summary', this.props)} text={"cart"} {...this.props} />
       
       </View>
     );

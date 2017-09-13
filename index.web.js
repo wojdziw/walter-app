@@ -14,7 +14,7 @@ if (__OFFLINE__) {
   require('offline-plugin/runtime').install()
 }
 
-AppRegistry.registerComponent('ExampleApp', () => App);
-AppRegistry.runApplication('ExampleApp', {
+AppRegistry.registerComponent('walter', () => App);
+AppRegistry.runApplication('walter', {
   rootTag: window.document.getElementById('react-root'),
 });

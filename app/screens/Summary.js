@@ -6,6 +6,7 @@ import { ActionCreators } from '../actions'
 import { connect } from 'react-redux'
 
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Summary extends Component {
   render() {
@@ -14,7 +15,7 @@ class Summary extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Menu')}
+        onPressPrev={() => {navigate('Menu', this.props, true); this.props.order.tip && this.props.switchTip();}}
         />
 
         <ScrollView style={{paddingTop: 8, paddingLeft: 8, paddingRight: 8, flex: 1, backgroundColor: colors.background }}>
@@ -29,7 +30,7 @@ class Summary extends Component {
 
         </ScrollView>
 
-        <Total onPress={() => this.props.chooseScreen('Payment')} text={"pay"} {...this.props} />
+        <Total onPress={() => navigate('Payment', this.props)} text={"pay"} {...this.props} />
 
         
       </View>

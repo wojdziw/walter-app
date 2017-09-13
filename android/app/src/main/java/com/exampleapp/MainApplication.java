@@ -1,4 +1,4 @@
-package com.exampleapp;
+package com.walter;
 
 import android.app.Application;
 

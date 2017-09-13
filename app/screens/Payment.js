@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
 import { connect } from 'react-redux'
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Payment extends Component {
 
@@ -20,7 +21,7 @@ class Payment extends Component {
           this.props.sendOrder();
         }
         clearInterval(interval);
-        this.props.chooseScreen('Outcome');
+        navigate('Outcome', this.props)
       }
     }, 1000);
   }
@@ -35,7 +36,7 @@ class Payment extends Component {
         <Buttons
         prevName = "←"
         nextName = ""
-        onPressPrev={() => this.props.chooseScreen('Summary')}
+        onPressPrev={() => navigate('Summary', this.props, true)}
         />
         {(this.props.paymentUri != "") && Platform.OS == 'web' && <PaymentBrowser uri={this.props.paymentUri}/>}
         {(this.props.paymentUri != "") && Platform.OS != 'web' && <PaymentWebview uri={this.props.paymentUri}/>}

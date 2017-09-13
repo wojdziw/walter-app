@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Picker, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Picker, StyleSheet, TextInput, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import { Header, Buttons } from '../components'
 
 import { connect } from 'react-redux'
@@ -7,6 +7,7 @@ import { ActionCreators } from '../actions'
 import { bindActionCreators } from 'redux'
 
 import colors from '../static/colors'
+import navigate from '../config/navigate'
 
 class Tables extends Component {
   componentWillMount() {
@@ -38,11 +39,14 @@ class Tables extends Component {
                 value={this.props.tableNumber}
                 keyboardType="numeric"
               />
-              <TouchableOpacity style={styles.button} onPress={() => this.props.chooseScreen('Menu')}> 
+              <TouchableOpacity
+                style={styles.button} 
+                onPress={() => navigate('Menu', this.props)}> 
                 <Text style={styles.text}>
                   ok
                 </Text>
               </TouchableOpacity>
+
             </View>
 
             
